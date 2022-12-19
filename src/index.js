@@ -15,6 +15,10 @@ refs.input.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 function onSearch(e) {
     const searchQuery = e.target.value.trim();
 
+    if (searchQuery === "") {
+        return;
+    }
+
     fetchCountries(searchQuery)
         .then(data => {
             if (data.length > 10) {
